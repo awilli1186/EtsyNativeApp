@@ -69,12 +69,12 @@ var GitApp = React.createClass({
     return (
       <View style={styles.container}>
        <Image
-         source={{uri: data.url_fullxfull}}
+         source={{uri: data.Images.url_75x75}}
          style={styles.thumbnail}
        />
         <View style={styles.rightContainer}>
-          <Text style={styles.title}>{data.subTitle}</Text>
-            <Text style={styles.title}>{data.price}</Text>
+          <Text style={styles.title}>{data.title}</Text>
+            <Text style={styles.price}>${data.price}   {data.Shop.shop_name}</Text>
         </View>
         </View>
     );
@@ -88,22 +88,33 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    borderBottomColor: '#eee',
+    marginBottom: 5,
   },
   rightContainer: {
     flex: 1,
   },
   title: {
-    fontSize: 20,
+    fontWeight: 'bold',
+    fontSize: 16,
     marginBottom: 8,
-    textAlign: 'center',
+    textAlign: 'right',
+    flex: 0,
+    right: 5,
   },
-  year: {
-    textAlign: 'center',
+  price: {
+    fontSize: 12,
+    textAlign: 'right',
+    flex: 0,
+    right: 5,
+  },
+  shop: {
+    fontSize: 12,
+    textAlign: 'left',
   },
   thumbnail: {
-    width: 100,
-    height: 125,
+    width: 53,
+    height: 81,
+    marginRight: 5,
   },
   listView: {
     paddingTop: 20,
