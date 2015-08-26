@@ -8,6 +8,7 @@ var {
   StyleSheet,
   Text,
   View,
+  TouchableHighlight
 } = React;
 
 var API_KEY = 'h9oq2yf3twf4ziejn10b717i';
@@ -47,11 +48,13 @@ var GitApp = React.createClass({
     }
 
     return (
+      <View>
       <ListView
         dataSource={this.state.dataSource}
         renderRow={this.renderItem}
         style={styles.listView}
       />
+    </View>
     );
   },
 
@@ -67,16 +70,18 @@ var GitApp = React.createClass({
 
   renderItem: function(data) {
     return (
-      <View style={styles.container}>
-       <Image
-         source={{uri: data.Images.url_75x75}}
-         style={styles.thumbnail}
-       />
-        <View style={styles.rightContainer}>
-          <Text style={styles.title}>{data.title}</Text>
-            <Text style={styles.price}>${data.price}   {data.Shop.shop_name}</Text>
-        </View>
-        </View>
+      <TouchableHighlight onPress={this.onPress}>
+        <View style={styles.container}>
+         <Image
+           source={{uri: data.Images[0].url_75x75}}
+           style={styles.thumbnail}
+         />
+          <View style={styles.rightContainer}>
+            <Text style={styles.title}>{data.title}</Text>
+              <Text style={styles.price}>${data.price}   {data.Shop.shop_name}</Text>
+          </View>
+          </View>
+      </TouchableHighlight>
     );
   },
 });
@@ -87,11 +92,16 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFFFFF',
     marginBottom: 5,
   },
   rightContainer: {
     flex: 1,
+  },
+  headLine: {
+    position: 'relative',
+    right: 10,
+    top: 5,
   },
   title: {
     fontWeight: 'bold',
@@ -118,7 +128,7 @@ var styles = StyleSheet.create({
   },
   listView: {
     paddingTop: 20,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#eee',
   },
 });
 
